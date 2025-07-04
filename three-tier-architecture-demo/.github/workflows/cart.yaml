@@ -3,14 +3,14 @@ name: Cart
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - '**.js'  # Only trigger on changes to Python files (**.py)
       - '.github/workflows/cart.yaml'  # Include workflow file changes
 
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - '**.js'  # Only trigger on changes to Python files (**.py)
       - '.github/workflows/cart.yaml'  # Include workflow file changes
