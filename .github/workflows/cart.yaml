@@ -27,10 +27,13 @@ jobs:
           fetch-depth: 0
 
       - name: NPM install
-        run: npm install 
+        run: |
+          cd three-tier-architecture-demo/cart  # Navigate to the cart service directory
+          npm install 
 
       - name: Build Docker image
         run: |
+          cd three-tier-architecture-demo/cart  # Navigate to the cart service directory
           docker build -t cart .  # Build image tagged as 'payment' from current directory
 
       - name: Docker Login (use secrets)
