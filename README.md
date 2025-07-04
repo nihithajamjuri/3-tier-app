@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Deploy a E-Commerce 3-Tier-App on AWS EKS
 
 ### Pre-requisites
