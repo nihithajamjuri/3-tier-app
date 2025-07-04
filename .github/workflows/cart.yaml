@@ -18,7 +18,7 @@ on:
 jobs:
   payment:
     name: Build and deploy cart microservice
-    runs-on: [self-hosted]  # Use a standard runner instead of self-hosted
+    runs-on: ubuntu-latest  # Use a standard runner instead of self-hosted
 
     steps:
       - name: Checkout code 
