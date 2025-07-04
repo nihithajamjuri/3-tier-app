@@ -14,12 +14,12 @@ git clone https://github.com/nihithajamjuri/3-tier-app.git
 
 ### Create a EKS cluster
 ```
-eksctl create cluster --name demo-cluster-three-tier-1 --region eu-north-1
+eksctl create cluster --name 3-tier-demo --region ca-central-1
 ```
 
 ### Configure IAM OIDC provider 
 ```
-export cluster_name=demo-cluster-three-tier-1
+export cluster_name=3-tier-demo
 ```
 ```
 oidc_id=$(aws eks describe-cluster --name $cluster_name --query "cluster.identity.oidc.issuer" --output text | cut -d '/' -f 5) 
@@ -35,7 +35,7 @@ eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
 ```
 - Configure kubectl with the EKS Cluster
 ```
-aws eks --region eu-north-1 update-kubeconfig --name $cluster_name
+aws eks --region ca-central-1 update-kubeconfig --name $cluster_name
 ```
 
 ### ALB Configuration
@@ -90,7 +90,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 eksctl create iamserviceaccount \
     --name ebs-csi-controller-sa \
     --namespace kube-system \
-    --cluster demo-cluster-three-tier-1 \
+    --cluster 3-tier-demo \
     --role-name AmazonEKS_EBS_CSI_DriverRole \
     --role-only \
     --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
@@ -98,7 +98,7 @@ eksctl create iamserviceaccount \
 ```
 - Run the following command. Replace with the name of your cluster, with your account ID.
 ```
-eksctl create addon --name aws-ebs-csi-driver --cluster demo-cluster-three-tier-1 --service-account-role-arn arn:aws:iam::<AWS-ACCOUNT-ID>:role/AmazonEKS_EBS_CSI_DriverRole --force
+eksctl create addon --name aws-ebs-csi-driver --cluster 3-tier-demo --service-account-role-arn arn:aws:iam::<AWS-ACCOUNT-ID>:role/AmazonEKS_EBS_CSI_DriverRole --force
 ```
 
 ### Deploy your app with helm
@@ -129,5 +129,5 @@ kubectl get ingress -n robot-shop
 
 - Delete cluster and all components
 ```
-eksctl delete cluster --name demo-cluster-three-tier-1 --region eu-north-1
+eksctl delete cluster --name 3-tier-demo --region ca-central-1
 ```
