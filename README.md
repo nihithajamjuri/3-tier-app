@@ -9,7 +9,7 @@
 
 ### Clone this project
 ```
-git clone https://github.com/jocasantos/3-tier-app-eks.git
+git clone https://github.com/nihithajamjuri/3-tier-app.git
 ```
 
 ### Create a EKS cluster
@@ -131,6 +131,3 @@ kubectl get ingress -n robot-shop
 ```
 eksctl delete cluster --name demo-cluster-three-tier-1 --region eu-north-1
 ```
-=======
-# 3-tier-app
->>>>>>> 7d8507fea48d612958d3fe1e2c842ceb579e80d9
